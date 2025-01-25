@@ -37,13 +37,15 @@
         }
 
         .marker {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
+    position: absolute;
+    width: 40px; /* Largeur du PNG */
+    height: 40px; /* Hauteur du PNG */
+    background: url('marker.png') no-repeat center center; /* Affiche le PNG */
+    background-size: contain; /* Ajuste l'image à la taille */
+    transform: translate(-50%, -50%); /* Centre le marqueur sur la position */
+    animation: none; /* Supprime l'animation de pulsation */
+}
+
 
         @keyframes pulse {
             0% {
