@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Aléatoire Fortnite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #4c51f7;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        #map {
+            position: relative;
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #map img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .credits {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drop Aléatoire Fortnite</h1>
+        <button id="randomButton">Choisir Aléatoirement</button>
+        <div id="result"></div>
+        <div id="map">
+            <img src="map.png" alt="Carte Fortnite">
+            <div id="marker" class="marker" style="display: none;"></div>
+        </div>
+        <div class="credits">
+            <p>Crédits : Conçu par [Votre Nom]</p>
+        </div>
+    </div>
+
+    <script>
+        // Liste des lieux avec leurs coordonnées (x, y en pourcentage de l'image)
+        const locations = [
+            { name: "Whiffy Wharf", x: 10, y: 15 },
+            { name: "Flooded Frogs", x: 20, y: 25 },
+            { name: "Magic Mosses", x: 30, y: 20 },
+            { name: "Demon's Dojo", x: 80, y: 10 },
+            { name: "Pumped Power", x: 65, y: 25 },
+            { name: "Lost Lake", x: 40, y: 35 },
+            { name: "Twinkle Terrace", x: 15, y: 45 },
+            { name: "Nightshift Forest", x: 25, y: 50 },
+            { name: "Warrior's Watch", x: 50, y: 60 },
+            { name: "Brutal Boxcars", x: 55, y: 20 },
+            { name: "Foxy Floodgate", x: 60, y: 45 },
+            { name: "Seaport City", x: 75, y: 75 },
+            { name: "Shattered Span", x: 85, y: 65 },
+            { name: "Burd", x: 30, y: 75 },
+            { name: "Canyon Crossing", x: 45, y: 85 },
+            { name: "Masked Meadows", x: 55, y: 70 },
+            { name: "Hopeful Heights", x: 70, y: 80 },
+            { name: "Kappa Kappa Factory", x: 60, y: 90 },
+            { name: "Shogun's Solitude", x: 15, y: 90 },
+        ];
+
+        const button = document.getElementById("randomButton");
+        const result = document.getElementById("result");
+        const marker = document.getElementById("marker");
+
+        button.addEventListener("click", () => {
+            // Choisir un lieu aléatoire
+            const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+
+            // Afficher le lieu dans le texte
+            result.innerHTML = `<p>Élément choisi : <strong>${randomLocation.name}</strong></p>`;
+
+            // Afficher le marqueur sur la carte
+            marker.style.left = `${randomLocation.x}%`;
+            marker.style.top = `${randomLocation.y}%`;
+            marker.style.display = "block";
+        });
+    </script>
+</body>
+</html>
